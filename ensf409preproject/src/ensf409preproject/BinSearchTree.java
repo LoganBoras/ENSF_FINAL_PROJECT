@@ -31,7 +31,7 @@ class BinSearchTree {
 		
 		if(root == null)
 			root = node;
-		else{
+		else {
 			Node cur;
 			// find the location to insert a new node.
 			cur = search(root, node);
