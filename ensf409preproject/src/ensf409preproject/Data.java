@@ -15,7 +15,7 @@ public class Data {
 	{
 		id = i;
 		faculty = f;
-		major = m;
+		major = m; //hi
 		year = y;
 	}
 	
