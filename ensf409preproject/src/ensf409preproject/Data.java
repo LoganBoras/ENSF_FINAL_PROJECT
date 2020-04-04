@@ -6,7 +6,7 @@ package ensf409preproject;
 public class Data {
 	
 	/**
-	 * id is the student's id eajnbaen;b;lejtnabhoeoiq
+	 * id is the student's id eajnbaen;b;lejtnab
 	 * faculty is the student's faculty 
 	 */
 	String  id,faculty, major, year;

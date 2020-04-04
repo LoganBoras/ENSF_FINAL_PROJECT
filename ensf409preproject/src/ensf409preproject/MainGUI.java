@@ -18,7 +18,7 @@ public class MainGUI extends JFrame{
 	public MainGUI() {
 		//super(s);
 		
-		b1= new JButton("Insert");//hi
+		b1= new JButton("Insert");
 		b2= new JButton("Find");
 		b3= new JButton("Browse");
 		b4= new JButton("Create Tree From File");
