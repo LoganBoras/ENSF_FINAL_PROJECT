@@ -19,7 +19,7 @@ class BinSearchTree {
 	
 	/**
 	 * the following method, inserts a new node that contains several data
-	 * fields, the student's id, faculty, major, and year into the list.
+	 * fields, the student's id, faculty, major, and year into the list
 	 * @param id - student's id number
 	 * @param faculty - faculty code
 	 * @param major - student's major
