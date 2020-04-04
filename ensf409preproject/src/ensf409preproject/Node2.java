@@ -6,7 +6,7 @@ package ensf409preproject;
 class Node {
 	
 	Data data;
-	Node left, right; //hi
+	Node left, right; 
 	/**
 	 * 
 	 * @param id student id
