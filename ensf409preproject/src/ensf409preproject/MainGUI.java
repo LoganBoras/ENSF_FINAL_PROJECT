@@ -13,7 +13,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 public class MainGUI extends JFrame {
-
+	
+	private BinSearchTree theTree;
 	private JButton b1, b2, b3, b4;
 
 	public MainGUI() {
@@ -49,7 +50,12 @@ public class MainGUI extends JFrame {
 
 		setVisible(true);
 		
-		b2.addActionListener(e -> System.out.println("cool"));
+		b2.addActionListener((ActionEvent e) -> {
+			String key = "";
+			JFrame inputBox = new JFrame();
+			inputBox.setVisible(true);
+			theTree.find(theTree.root,key);
+		});
 		
 
 		b4.addActionListener((ActionEvent e) -> {
