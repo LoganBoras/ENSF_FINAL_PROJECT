@@ -96,24 +96,41 @@ public class MainGUI extends JFrame {
 		});
 
 		b4.addActionListener((ActionEvent e) -> {
-			JDialog dialog = new JDialog();
+			String fileName = "";
+			JFrame f = new JFrame("Input");
+			JDialog dialog = new JDialog(f, "Input");
+			JLabel label = new JLabel("Please enter the file name: ");
 			JButton bOk = new JButton("OK");
 			JButton bCancel = new JButton("Cancel");
-			dialog.setSize(100, 50);
-			dialog.add(bOk);
-			dialog.add(bCancel);
-			setLayout(new BorderLayout());
-			add("North", new JLabel("Enter the file name:"));
-			// JTextArea text = new JTextArea(100, 50);
+			JPanel inputPanel = new JPanel();
+			JTextField userInput = new JTextField(50);
+
+			inputPanel.add(label);
+			inputPanel.add(userInput);
+			userInput.setVisible(true);
+			inputPanel.add(bCancel);
+			inputPanel.add(bOk);
+			dialog.add(inputPanel);
+			dialog.setSize(200, 200);
+
+			userInput.addActionListener((ActionEvent event) -> {
+
+			});
+			bOk.addActionListener((ActionEvent event) -> {
+				createBinaryTree(fileName);
+			});
+			bCancel.addActionListener((ActionEvent event) -> {
+				dialog.dispose();
+			});
+
 			dialog.setVisible(true);
-			createBinaryTree();
 		});
 	}
 
-	private void createBinaryTree() {
+	private void createBinaryTree(String fileName) {
 		theTree = new BinSearchTree();
 		try {
-			scan = new BufferedReader(new FileReader("input.txt"));
+			scan = new BufferedReader(new FileReader(fileName));
 			String line;
 			String[] words;
 			while (true) {
