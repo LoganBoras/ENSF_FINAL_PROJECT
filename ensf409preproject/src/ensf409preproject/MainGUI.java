@@ -3,6 +3,9 @@ package ensf409preproject;
 import java.awt.BorderLayout;
 import java.awt.Scrollbar;
 import java.awt.event.ActionEvent;
+import java.io.EOFException;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -23,6 +26,8 @@ public class MainGUI extends JFrame {
 	
 <<<<<<< HEAD
 	private JButton b1,b2,b3,b4;
+	private ObjectInputStream input;
+	private BinSearchTree theTree= new BinSearchTree();
 
 	
 	
@@ -73,7 +78,22 @@ public class MainGUI extends JFrame {
 
 		setVisible(true);
 		
+		input = new ObjectInputStream(new FileInputStream(name));
 		
+		try{
+			while(true) {
+				theTree.insert(input.readline()); 
+		}
+			
+			
+		}catch(EOFException e) {
+            System.out.println("End of file.");
+		}
+
+
+		b3.addActionListener((ActionEvent e)->{
+			
+		});
 <<<<<<< HEAD
 		
 		
@@ -112,7 +132,8 @@ public class MainGUI extends JFrame {
 		// TODO Auto-generated method stub
 		MainGUI main = new MainGUI();
 
-	}
+		}
 
+	}
 }
-}
+

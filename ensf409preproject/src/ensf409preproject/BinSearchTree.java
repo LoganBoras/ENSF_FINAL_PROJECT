@@ -1,6 +1,6 @@
 package ensf409preproject;
 
-<<<<<<< HEAD
+
 import java.io.*;
 =======
 import java.io.IOException;
