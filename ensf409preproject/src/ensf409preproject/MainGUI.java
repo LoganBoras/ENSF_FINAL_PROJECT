@@ -53,9 +53,9 @@ public class MainGUI extends JFrame {
 		
 		b2.addActionListener((ActionEvent e) -> {
 			//String key = "";
-			JFrame inputBox = new JFrame("Please enter your search key");
+			JFrame inputBox = new JFrame();
 			inputBox.setSize(300, 200);
-			JTextField userInput = new JTextField(50);
+			JTextField userInput = new JTextField("Please enter your search key",50);
 			inputBox.add(userInput);
 			userInput.setVisible(true);
 			userInput.addActionListener((ActionEvent a) -> {
@@ -82,6 +82,7 @@ public class MainGUI extends JFrame {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		MainGUI main = new MainGUI();
+
 	}
 
 }
