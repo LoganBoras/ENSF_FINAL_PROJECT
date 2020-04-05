@@ -5,6 +5,7 @@ import java.awt.Scrollbar;
 import java.awt.event.ActionEvent;
 
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -52,17 +53,15 @@ public class MainGUI extends JFrame {
 		
 
 		b4.addActionListener((ActionEvent e) -> {
-			setTitle("Input");
-			setSize(300, 300);
-			JPanel panel3 = new JPanel();
+			JDialog dialog = new JDialog();
 			JButton bOk = new JButton("OK");
 			JButton bCancel = new JButton("Cancel");
-			panel3.add(bOk);
-			panel3.add(bCancel);
+			dialog.add(bOk);
+			dialog.add(bCancel);
 			setLayout(new BorderLayout());
 			add("North", new JLabel("Enter the file name:"));
 			JTextArea text = new JTextArea(100, 42);
-			setVisible(true);
+			dialog.setVisible(true);
 		});
 
 	}
