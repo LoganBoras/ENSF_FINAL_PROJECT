@@ -52,13 +52,6 @@ public class MainGUI extends JFrame{
 		
 		 b2.addActionListener(e -> System.out.println("cool") );
 		
-		
-		
-
-
-
-
-		
 	}
 
 	public static void main(String[] args) {
