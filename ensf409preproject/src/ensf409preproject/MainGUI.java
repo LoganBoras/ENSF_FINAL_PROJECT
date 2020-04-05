@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 public class MainGUI extends JFrame {
 	
@@ -51,10 +52,16 @@ public class MainGUI extends JFrame {
 		setVisible(true);
 		
 		b2.addActionListener((ActionEvent e) -> {
-			String key = "";
+			//String key = "";
 			JFrame inputBox = new JFrame();
+			inputBox.setSize(300, 200);
+			JTextField userInput = new JTextField("Please enter your search key",50);
+			inputBox.add(userInput);
+			userInput.setVisible(true);
+			userInput.addActionListener((ActionEvent a) -> {
+				theTree.find(theTree.root,userInput.getText());
+			});
 			inputBox.setVisible(true);
-			theTree.find(theTree.root,key);
 		});
 		
 
