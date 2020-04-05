@@ -5,15 +5,12 @@ import java.awt.Scrollbar;
 import java.awt.event.ActionEvent;
 import java.io.BufferedReader;
 import java.io.EOFException;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import java.util.Scanner;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -24,30 +21,24 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-
-
-
-
 public class MainGUI extends JFrame {
 
-	private JButton b1,b2,b3,b4;
+	private JButton b1, b2, b3, b4;
 	private ObjectInputStream input;
 	private BinSearchTree theTree;
 	private PrintWriter pr;
 	private BufferedReader scan;
 
-
 	public MainGUI() {
 
-		//super(s); dont need
-		
-		b1= new JButton("Insert");
-		b2= new JButton("Find");
-		b3= new JButton("Browse");
-		b4= new JButton("Create Tree From File");
+		// super(s); dont need
+
+		b1 = new JButton("Insert");
+		b2 = new JButton("Find");
+		b3 = new JButton("Browse");
+		b4 = new JButton("Create Tree From File");
 
 		// super(s);
-
 
 		b1 = new JButton("Insert");
 		b2 = new JButton("Find");
@@ -75,25 +66,24 @@ public class MainGUI extends JFrame {
 		add("North", new JLabel("An Application to Maintain Student Records"));
 		add("South", getContentPane().add(panel1));
 		add("Center", getContentPane().add(panel2));
-		add("East",new Scrollbar( Scrollbar.VERTICAL) );
+		add("East", new Scrollbar(Scrollbar.VERTICAL));
 
 		setVisible(true);
-		
 
 		b2.addActionListener((ActionEvent e) -> {
-			//String key = "";
+			// String key = "";
 			JFrame inputBox = new JFrame("Please enter your search key");
 			inputBox.setSize(300, 50);
 			JTextField userInput = new JTextField(50);
 			inputBox.add(userInput);
 			userInput.setVisible(true);
 			userInput.addActionListener((ActionEvent a) -> {
-				System.out.println(theTree.find(theTree.root,userInput.getText()));
+				System.out.println(theTree.find(theTree.root, userInput.getText()));
 			});
 			inputBox.setVisible(true);
 		});
 
-		b3.addActionListener((ActionEvent e)->{
+		b3.addActionListener((ActionEvent e) -> {
 			StringWriter buffer = new StringWriter();
 			PrintWriter writer = new PrintWriter(buffer);
 			try {
@@ -114,39 +104,37 @@ public class MainGUI extends JFrame {
 			dialog.add(bCancel);
 			setLayout(new BorderLayout());
 			add("North", new JLabel("Enter the file name:"));
-			//JTextArea text = new JTextArea(100, 50);
+			// JTextArea text = new JTextArea(100, 50);
 			dialog.setVisible(true);
 			createBinaryTree();
 		});
 	}
-	
+
 	private void createBinaryTree() {
 		theTree = new BinSearchTree();
-		try{
+		try {
 			scan = new BufferedReader(new FileReader("input.txt"));
 			String line;
 			String[] words;
-			while(true) {
+			while (true) {
 				line = scan.readLine();
-				if(line==null)
+				if (line == null)
 					break;
-				
+
 				words = line.split("\\s+");
-				theTree.insert(words[1],words[2],words[3],words[4]); 
+				theTree.insert(words[1], words[2], words[3], words[4]);
 			}
-		}catch(EOFException e) {
-            System.out.println("End of file.");
+		} catch (EOFException e) {
+			System.out.println("End of file.");
 		} catch (FileNotFoundException e1) {
 			e1.printStackTrace();
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
 	}
-	
+
 	public static void main(String[] args) {
 		MainGUI main = new MainGUI();
 	}
 
 }
-
-

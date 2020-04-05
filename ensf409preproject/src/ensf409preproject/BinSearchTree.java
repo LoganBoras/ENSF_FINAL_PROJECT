@@ -1,10 +1,8 @@
 package ensf409preproject;
 
-
 import java.io.*;
 import java.io.IOException;
 import java.io.PrintWriter;
-
 
 import javax.swing.JOptionPane;
 
@@ -23,16 +21,15 @@ class BinSearchTree {
 	}
 
 	/**
-<<<<<<< HEAD
-	 * the following method, inserts a new node that contains several data
-	 * fields, the student's id, faculty, major, and year into the list
-	 * @param id - student's id number
-=======
-	 * the following method, inserts a new node that contains several data fields,
-	 * the student's id, faculty, major, and year into the list
+	 * <<<<<<< HEAD the following method, inserts a new node that contains several
+	 * data fields, the student's id, faculty, major, and year into the list
 	 * 
-	 * @param id      - student's id number
->>>>>>> branch 'master' of https://github.com/LoganBoras/ENSF_FINAL_PROJECT.git
+	 * @param id      - student's id number ======= the following method, inserts a
+	 *                new node that contains several data fields, the student's id,
+	 *                faculty, major, and year into the list
+	 * 
+	 * @param id      - student's id number >>>>>>> branch 'master' of
+	 *                https://github.com/LoganBoras/ENSF_FINAL_PROJECT.git
 	 * @param faculty - faculty code
 	 * @param major   - student's major
 	 * @param year    - student's year of study
