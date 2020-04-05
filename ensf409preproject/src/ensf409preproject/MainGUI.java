@@ -17,45 +17,22 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-<<<<<<< HEAD
-
-
 
 public class MainGUI extends JFrame{
-=======
-public class MainGUI extends JFrame {
->>>>>>> branch 'master' of https://github.com/LoganBoras/ENSF_FINAL_PROJECT.git
 	
-<<<<<<< HEAD
 	private JButton b1,b2,b3,b4;
 	private ObjectInputStream input;
-	private BinSearchTree theTree= new BinSearchTree();
-
-	
-	
-=======
 	private BinSearchTree theTree;
-	private JButton b1, b2, b3, b4;
-	private PrintWriter pr = new PrintWriter();
+	private PrintWriter pr;
 
->>>>>>> branch 'master' of https://github.com/LoganBoras/ENSF_FINAL_PROJECT.git
 	public MainGUI() {
-<<<<<<< HEAD
 		//super(s); dont need
 		
 		b1= new JButton("Insert");
 		b2= new JButton("Find");
 		b3= new JButton("Browse");
-		b4= new JButton("Create Tree From File");
-=======
-		// super(s);
->>>>>>> branch 'master' of https://github.com/LoganBoras/ENSF_FINAL_PROJECT.git
-
-		b1 = new JButton("Insert");
-		b2 = new JButton("Find");
-		b3 = new JButton("Browse");
-		b4 = new JButton("Create Tree From File");
-
+		b4= new JButton("Create Tree From File");		
+		
 		setTitle("Main Window");
 		setSize(500, 500);
 
@@ -81,14 +58,11 @@ public class MainGUI extends JFrame {
 
 		setVisible(true);
 		
-<<<<<<< HEAD
-
-=======
-		input = new ObjectInputStream(new FileInputStream(name));
+		input = new ObjectInputStream(new FileInputStream("input.txt"));
 		
 		try{
 			while(true) {
-				theTree.insert(input.readline()); 
+				theTree.insert(input.readLine()); 
 		}
 			
 			
@@ -100,7 +74,6 @@ public class MainGUI extends JFrame {
 		b3.addActionListener((ActionEvent e)->{
 			textArea.setText(theTree.print_tree(theTree.root, pr)); 
 		});
-<<<<<<< HEAD
 		
 		
 
@@ -108,10 +81,7 @@ public class MainGUI extends JFrame {
 		
 		
 		
-		
-		
-=======
-		b2.addActionListener((ActionEvent e) -> {
+				b2.addActionListener((ActionEvent e) -> {
 			//String key = "";
 			JFrame inputBox = new JFrame("Please enter your search key");
 			inputBox.setSize(300, 200);
@@ -124,10 +94,7 @@ public class MainGUI extends JFrame {
 			inputBox.setVisible(true);
 		});
 
->>>>>>> branch 'master' of https://github.com/LoganBoras/ENSF_FINAL_PROJECT.git
 		
->>>>>>> refs/remotes/origin/master
-
 		b4.addActionListener((ActionEvent e) -> {
 			JDialog dialog = new JDialog();
 			JButton bOk = new JButton("OK");
@@ -142,16 +109,18 @@ public class MainGUI extends JFrame {
 
 	}
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		MainGUI main = new MainGUI();
-<<<<<<< HEAD
-	}
-=======
+	
 
-		}
->>>>>>> refs/remotes/origin/master
 
-	}
+
+
+
+public static void main(String[] args) {
+	// TODO Auto-generated method stub
+	MainGUI main = new MainGUI();
 }
+
+}
+
+
 
