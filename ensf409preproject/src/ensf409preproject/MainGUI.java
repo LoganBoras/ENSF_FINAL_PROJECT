@@ -2,6 +2,7 @@ package ensf409preproject;
 
 import java.awt.BorderLayout;
 import java.awt.Scrollbar;
+import java.awt.event.ActionEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -11,12 +12,17 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+
+
+
 public class MainGUI extends JFrame{
 	
 	private JButton b1,b2,b3,b4;
+
+	
 	
 	public MainGUI() {
-		//super(s);
+		//super(s); dont need
 		
 		b1= new JButton("Insert");
 		b2= new JButton("Find");
@@ -48,6 +54,12 @@ public class MainGUI extends JFrame{
 		//add("East",new Scrollbar( Scrollbar.VERTICAL) );
 		
 		setVisible(true);
+		
+		
+		
+
+		
+		
 		
 		
 		
