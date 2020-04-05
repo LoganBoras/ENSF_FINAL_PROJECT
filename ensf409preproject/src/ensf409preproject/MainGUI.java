@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
+import java.io.PrintWriter;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -34,6 +35,7 @@ public class MainGUI extends JFrame {
 =======
 	private BinSearchTree theTree;
 	private JButton b1, b2, b3, b4;
+	private PrintWriter pr = new PrintWriter();
 
 >>>>>>> branch 'master' of https://github.com/LoganBoras/ENSF_FINAL_PROJECT.git
 	public MainGUI() {
@@ -92,7 +94,7 @@ public class MainGUI extends JFrame {
 
 
 		b3.addActionListener((ActionEvent e)->{
-			
+			textArea.setText(theTree.print_tree(theTree.root, pr)); 
 		});
 <<<<<<< HEAD
 		
