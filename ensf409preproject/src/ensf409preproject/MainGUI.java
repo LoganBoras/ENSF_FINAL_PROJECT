@@ -10,7 +10,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.PrintStream;
 import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.Scanner;
 
 import javax.swing.JButton;
@@ -78,11 +80,6 @@ public class MainGUI extends JFrame {
 		setVisible(true);
 		
 
-
-		b3.addActionListener((ActionEvent e)->{
-			//textArea.setText(theTree.print_tree(theTree.root, pr)); 
-		});
-
 		b2.addActionListener((ActionEvent e) -> {
 			//String key = "";
 			JFrame inputBox = new JFrame("Please enter your search key");
@@ -96,17 +93,28 @@ public class MainGUI extends JFrame {
 			inputBox.setVisible(true);
 		});
 
-
+		b3.addActionListener((ActionEvent e)->{
+			StringWriter buffer = new StringWriter();
+			PrintWriter writer = new PrintWriter(buffer);
+			try {
+				theTree.print_tree(theTree.root, writer);
+			} catch (IOException e2) {
+				e2.printStackTrace();
+			}
+			String contents = buffer.toString();
+			textArea.setText(contents);
+		});
 
 		b4.addActionListener((ActionEvent e) -> {
 			JDialog dialog = new JDialog();
 			JButton bOk = new JButton("OK");
 			JButton bCancel = new JButton("Cancel");
+			dialog.setSize(100, 50);
 			dialog.add(bOk);
 			dialog.add(bCancel);
 			setLayout(new BorderLayout());
 			add("North", new JLabel("Enter the file name:"));
-			JTextArea text = new JTextArea(100, 42);
+			//JTextArea text = new JTextArea(100, 50);
 			dialog.setVisible(true);
 			createBinaryTree();
 		});
@@ -124,7 +132,6 @@ public class MainGUI extends JFrame {
 					break;
 				
 				words = line.split("\\s+");
-				System.out.println();
 				theTree.insert(words[1],words[2],words[3],words[4]); 
 			}
 		}catch(EOFException e) {
