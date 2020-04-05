@@ -59,7 +59,7 @@ public class MainGUI extends JFrame {
 			inputBox.add(userInput);
 			userInput.setVisible(true);
 			userInput.addActionListener((ActionEvent a) -> {
-				theTree.find(theTree.root,userInput.getText());
+				System.out.println(theTree.find(theTree.root,userInput.getText()));
 			});
 			inputBox.setVisible(true);
 		});
