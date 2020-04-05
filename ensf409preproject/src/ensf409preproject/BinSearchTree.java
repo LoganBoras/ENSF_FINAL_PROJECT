@@ -2,11 +2,10 @@ package ensf409preproject;
 
 
 import java.io.*;
-=======
 import java.io.IOException;
 import java.io.PrintWriter;
 
->>>>>>> branch 'master' of https://github.com/LoganBoras/ENSF_FINAL_PROJECT
+
 import javax.swing.JOptionPane;
 
 /**

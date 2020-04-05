@@ -3,12 +3,15 @@ package ensf409preproject;
 import java.awt.BorderLayout;
 import java.awt.Scrollbar;
 import java.awt.event.ActionEvent;
+import java.io.BufferedReader;
 import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.PrintWriter;
+import java.util.Scanner;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -29,6 +32,7 @@ public class MainGUI extends JFrame {
 	private ObjectInputStream input;
 	private BinSearchTree theTree;
 	private PrintWriter pr;
+	private BufferedReader scan;
 
 
 	public MainGUI() {
@@ -69,27 +73,10 @@ public class MainGUI extends JFrame {
 		add("North", new JLabel("An Application to Maintain Student Records"));
 		add("South", getContentPane().add(panel1));
 		add("Center", getContentPane().add(panel2));
-		// add("East",new Scrollbar( Scrollbar.VERTICAL) );
+		add("East",new Scrollbar( Scrollbar.VERTICAL) );
 
 		setVisible(true);
 		
-
-		
-		
-		try{
-		input = new ObjectInputStream(new FileInputStream("intput.txt"));
-//			while(true) {
-//				theTree.insert(input.readLine()); 
-//		}
-			
-			
-		}catch(EOFException e) {
-            System.out.println("End of file.");
-		} catch (FileNotFoundException e1) {
-			e1.printStackTrace();
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
 
 
 		b3.addActionListener((ActionEvent e)->{
@@ -99,7 +86,7 @@ public class MainGUI extends JFrame {
 		b2.addActionListener((ActionEvent e) -> {
 			//String key = "";
 			JFrame inputBox = new JFrame("Please enter your search key");
-			inputBox.setSize(300, 20);
+			inputBox.setSize(300, 50);
 			JTextField userInput = new JTextField(50);
 			inputBox.add(userInput);
 			userInput.setVisible(true);
@@ -121,9 +108,34 @@ public class MainGUI extends JFrame {
 			add("North", new JLabel("Enter the file name:"));
 			JTextArea text = new JTextArea(100, 42);
 			dialog.setVisible(true);
+			createBinaryTree();
 		});
 	}
-
+	
+	private void createBinaryTree() {
+		theTree = new BinSearchTree();
+		try{
+			scan = new BufferedReader(new FileReader("input.txt"));
+			String line;
+			String[] words;
+			while(true) {
+				line = scan.readLine();
+				if(line==null)
+					break;
+				
+				words = line.split("\\s+");
+				System.out.println();
+				theTree.insert(words[1],words[2],words[3],words[4]); 
+			}
+		}catch(EOFException e) {
+            System.out.println("End of file.");
+		} catch (FileNotFoundException e1) {
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+	}
+	
 	public static void main(String[] args) {
 		MainGUI main = new MainGUI();
 	}
