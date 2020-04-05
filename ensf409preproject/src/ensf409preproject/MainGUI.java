@@ -51,19 +51,7 @@ public class MainGUI extends JFrame {
 
 		setVisible(true);
 		
-		b2.addActionListener((ActionEvent e) -> {
-			//String key = "";
-			JFrame inputBox = new JFrame();
-			inputBox.setSize(300, 200);
-			JTextField userInput = new JTextField("Please enter your search key",50);
-			inputBox.add(userInput);
-			userInput.setVisible(true);
-			userInput.addActionListener((ActionEvent a) -> {
-				System.out.println(theTree.find(theTree.root,userInput.getText()));
-			});
-			inputBox.setVisible(true);
-		});
-		
+
 
 		b4.addActionListener((ActionEvent e) -> {
 			JDialog dialog = new JDialog();
@@ -82,7 +70,6 @@ public class MainGUI extends JFrame {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		MainGUI main = new MainGUI();
-
 	}
 
 }
