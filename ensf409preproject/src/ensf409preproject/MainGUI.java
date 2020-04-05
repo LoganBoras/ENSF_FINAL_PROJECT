@@ -2,6 +2,7 @@ package ensf409preproject;
 
 import java.awt.BorderLayout;
 import java.awt.Scrollbar;
+import java.awt.event.ActionEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -49,7 +50,7 @@ public class MainGUI extends JFrame{
 		
 		setVisible(true);
 		
-		
+		 b2.addActionListener(e -> System.out.println("cool") );
 		
 		
 		
