@@ -26,9 +26,11 @@ public class MainGUI extends JFrame{
 	private JButton b1,b2,b3,b4;
 	private BinSearchTree theTree;
 	private BufferedReader scan;
+	private String fileName;
 
 
 	public MainGUI() {
+<<<<<<< HEAD
 		//super(s); dont need
 		
 		b1= new JButton("Insert");
@@ -37,6 +39,16 @@ public class MainGUI extends JFrame{
 		b4= new JButton("Create Tree From File");		
 		
 
+=======
+		setFileName("");
+
+		// super(s);
+
+		b1 = new JButton("Insert");
+		b2 = new JButton("Find");
+		b3 = new JButton("Browse");
+		b4 = new JButton("Create Tree From File");
+>>>>>>> branch 'master' of https://github.com/LoganBoras/ENSF_FINAL_PROJECT.git
 
 		setTitle("Main Window");
 		setSize(500, 500);
@@ -62,6 +74,7 @@ public class MainGUI extends JFrame{
 		add("East", new Scrollbar(Scrollbar.VERTICAL));
 
 		setVisible(true);
+<<<<<<< HEAD
 		
 		/*input = new ObjectInputStream(new FileInputStream("input.txt"));
 		
@@ -76,20 +89,40 @@ public class MainGUI extends JFrame{
 		}*/
 		
 		b2.addActionListener((ActionEvent e) -> {
+=======
+
+		b2.addActionListener((ActionEvent e) -> { // Find
+>>>>>>> branch 'master' of https://github.com/LoganBoras/ENSF_FINAL_PROJECT.git
 			// String key = "";
-			JFrame inputBox = new JFrame("Please enter your search key");
-			inputBox.setSize(300, 50);
-			JTextField userInput = new JTextField(50);
-			inputBox.add(userInput);
+			JFrame inputFrame = new JFrame("Input");
+			JPanel inputPanel = new JPanel();
+			JLabel label = new JLabel("Please enter the student's ID: ");
+			JTextField userInput = new JTextField(20);
+
+			inputPanel.add(label);
+			inputPanel.add(userInput);
+			inputFrame.add(inputPanel);
+
+			inputFrame.pack();
 			userInput.setVisible(true);
 			userInput.addActionListener((ActionEvent a) -> {
-				System.out.println(theTree.find(theTree.root, userInput.getText()));
+				// System.out.println(theTree.find(theTree.root, userInput.getText()));
+				Node node = theTree.find(theTree.root, userInput.getText());
+				if (node == null) {
+					// print out to panel can't find student
+				} else {
+					// print out to panel the toString
+				}
 			});
-			inputBox.setVisible(true);
+			inputFrame.setVisible(true);
 		});
 
+<<<<<<< HEAD
 		
 		b3.addActionListener((ActionEvent e) -> {
+=======
+		b3.addActionListener((ActionEvent e) -> { // Browse
+>>>>>>> branch 'master' of https://github.com/LoganBoras/ENSF_FINAL_PROJECT.git
 			StringWriter buffer = new StringWriter();
 			PrintWriter writer = new PrintWriter(buffer);
 			try {
@@ -101,25 +134,45 @@ public class MainGUI extends JFrame{
 			textArea.setText(contents);
 		});
 
-		b4.addActionListener((ActionEvent e) -> {
-			JDialog dialog = new JDialog();
+		b4.addActionListener((ActionEvent e) -> { // Create tree from file
+			JFrame f = new JFrame("Input");
+			JDialog dialog = new JDialog(f, "Input");
+			JLabel label = new JLabel("Please enter the file name (and hit enter then ok): ");
 			JButton bOk = new JButton("OK");
 			JButton bCancel = new JButton("Cancel");
-			dialog.setSize(100, 50);
-			dialog.add(bOk);
-			dialog.add(bCancel);
-			setLayout(new BorderLayout());
-			add("North", new JLabel("Enter the file name:"));
-			// JTextArea text = new JTextArea(100, 50);
+			JPanel inputPanel = new JPanel();
+			JTextField userInput = new JTextField(35);
+
+			inputPanel.add(label);
+			inputPanel.add(userInput);
+			userInput.setVisible(true);
+			inputPanel.add(bCancel);
+			inputPanel.add(bOk);
+			dialog.add(inputPanel);
+			dialog.setSize(400, 200);
+
+			userInput.addActionListener((ActionEvent event) -> {
+				String line = userInput.getText();
+				System.out.println(line);
+				setFileName(line); // error with getText() here
+			});
+
+			bOk.addActionListener((ActionEvent event) -> {
+				createBinaryTree();
+				dialog.dispose();
+			});
+			bCancel.addActionListener((ActionEvent event) -> {
+				dialog.dispose();
+			});
+
 			dialog.setVisible(true);
-			createBinaryTree();
 		});
 	}
 
 	private void createBinaryTree() {
 		theTree = new BinSearchTree();
 		try {
-			scan = new BufferedReader(new FileReader("input.txt"));
+			scan = new BufferedReader(new FileReader(getFileName()));
 			String line;
 			String[] words;
 			while (true) {
@@ -145,7 +198,17 @@ public class MainGUI extends JFrame{
 			
 	}
 
+<<<<<<< HEAD
 
+=======
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+>>>>>>> branch 'master' of https://github.com/LoganBoras/ENSF_FINAL_PROJECT.git
 
 }
 
