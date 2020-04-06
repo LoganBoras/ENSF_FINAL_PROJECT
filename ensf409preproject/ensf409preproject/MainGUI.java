@@ -30,16 +30,6 @@ public class MainGUI extends JFrame{
 
 
 	public MainGUI() {
-<<<<<<< HEAD
-		//super(s); dont need
-		
-		b1= new JButton("Insert");
-		b2= new JButton("Find");
-		b3= new JButton("Browse");
-		b4= new JButton("Create Tree From File");		
-		
-
-=======
 		setFileName("");
 
 		// super(s);
@@ -48,7 +38,6 @@ public class MainGUI extends JFrame{
 		b2 = new JButton("Find");
 		b3 = new JButton("Browse");
 		b4 = new JButton("Create Tree From File");
->>>>>>> branch 'master' of https://github.com/LoganBoras/ENSF_FINAL_PROJECT.git
 
 		setTitle("Main Window");
 		setSize(500, 500);
@@ -74,7 +63,6 @@ public class MainGUI extends JFrame{
 		add("East", new Scrollbar(Scrollbar.VERTICAL));
 
 		setVisible(true);
-<<<<<<< HEAD
 		
 		b1.addActionListener((ActionEvent e) -> {
 			// String key = "";
@@ -88,8 +76,6 @@ public class MainGUI extends JFrame{
 //			});
 			inputBox.setVisible(true);
 		});
-=======
-<<<<<<< HEAD
 		
 		/*input = new ObjectInputStream(new FileInputStream("input.txt"));
 		
@@ -103,13 +89,8 @@ public class MainGUI extends JFrame{
             System.out.println("End of file.");
 		}*/
 		
-		b2.addActionListener((ActionEvent e) -> {
-=======
->>>>>>> branch 'master' of https://github.com/LoganBoras/ENSF_FINAL_PROJECT
 
 		b2.addActionListener((ActionEvent e) -> { // Find
->>>>>>> branch 'master' of https://github.com/LoganBoras/ENSF_FINAL_PROJECT.git
-			// String key = "";
 			JFrame inputFrame = new JFrame("Input");
 			JPanel inputPanel = new JPanel();
 			JLabel label = new JLabel("Please enter the student's ID: ");
@@ -133,12 +114,7 @@ public class MainGUI extends JFrame{
 			inputFrame.setVisible(true);
 		});
 
-<<<<<<< HEAD
-		
-		b3.addActionListener((ActionEvent e) -> {
-=======
 		b3.addActionListener((ActionEvent e) -> { // Browse
->>>>>>> branch 'master' of https://github.com/LoganBoras/ENSF_FINAL_PROJECT.git
 			StringWriter buffer = new StringWriter();
 			PrintWriter writer = new PrintWriter(buffer);
 			try {
@@ -214,9 +190,6 @@ public class MainGUI extends JFrame{
 			
 	}
 
-<<<<<<< HEAD
-
-=======
 	public String getFileName() {
 		return fileName;
 	}
@@ -224,7 +197,6 @@ public class MainGUI extends JFrame{
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
 	}
->>>>>>> branch 'master' of https://github.com/LoganBoras/ENSF_FINAL_PROJECT.git
 
 }
 
