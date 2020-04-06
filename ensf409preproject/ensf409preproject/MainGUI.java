@@ -8,7 +8,6 @@ import java.io.EOFException;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
@@ -21,16 +20,17 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public class MainGUI extends JFrame {
 
-	private JButton b1, b2, b3, b4;
-	private ObjectInputStream input;
+public class MainGUI extends JFrame{
+	
+	private JButton b1,b2,b3,b4;
 	private BinSearchTree theTree;
-	private PrintWriter pr;
 	private BufferedReader scan;
 	private String fileName;
 
-	public MainGUI() {
+
+	public MainGUI() {	
+
 		setFileName("");
 
 		// super(s);
@@ -54,7 +54,7 @@ public class MainGUI extends JFrame {
 		// panel2= (JPanel) getContentPane();
 		JTextArea textArea = new JTextArea(500, 42);
 		JScrollPane scrollPane = new JScrollPane(textArea);
-		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		//scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		panel2.add(scrollPane);
 
 		setLayout(new BorderLayout());
@@ -64,9 +64,33 @@ public class MainGUI extends JFrame {
 		add("East", new Scrollbar(Scrollbar.VERTICAL));
 
 		setVisible(true);
-
-		b2.addActionListener((ActionEvent e) -> { // Find
+		
+		b1.addActionListener((ActionEvent e) -> {
 			// String key = "";
+			JFrame inputBox = new JFrame("Please enter your search key");
+			inputBox.setSize(300, 50);
+			JTextArea userInput = new JTextArea(300, 300);
+			inputBox.add(userInput);
+			userInput.setVisible(true);
+//			userInput.addActionListener((ActionEvent a) -> {
+//				System.out.println(theTree.find(theTree.root, userInput.getText()));
+//			});
+			inputBox.setVisible(true);
+		});
+		
+		/*input = new ObjectInputStream(new FileInputStream("input.txt"));
+		
+		try{
+			while(true) {
+				theTree.insert(input.readLine()); 
+		}
+			
+			
+		}catch(EOFException e) {
+            System.out.println("End of file.");
+		}*/
+		
+		b2.addActionListener((ActionEvent e) -> { // Find
 			JFrame inputFrame = new JFrame("Input");
 			JPanel inputPanel = new JPanel();
 			JLabel label = new JLabel("Please enter the student's ID: ");
@@ -98,6 +122,7 @@ public class MainGUI extends JFrame {
 			inputFrame.setVisible(true);
 		});
 
+		
 		b3.addActionListener((ActionEvent e) -> { // Browse
 			StringWriter buffer = new StringWriter();
 			PrintWriter writer = new PrintWriter(buffer);
@@ -168,8 +193,10 @@ public class MainGUI extends JFrame {
 		}
 	}
 
+	
 	public static void main(String[] args) {
-		MainGUI main = new MainGUI();
+		MainGUI main= new MainGUI();		
+			
 	}
 
 	public String getFileName() {
@@ -181,3 +208,6 @@ public class MainGUI extends JFrame {
 	}
 
 }
+
+
+
