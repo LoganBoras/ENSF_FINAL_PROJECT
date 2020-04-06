@@ -1,6 +1,7 @@
 package ensf409preproject;
 
 import java.awt.BorderLayout;
+import java.awt.GridLayout;
 import java.awt.Scrollbar;
 import java.awt.event.ActionEvent;
 import java.io.BufferedReader;
@@ -30,7 +31,6 @@ public class MainGUI extends JFrame{
 
 
 	public MainGUI() {
-<<<<<<< HEAD
 		//super(s); dont need
 		
 		b1= new JButton("Insert");
@@ -39,7 +39,6 @@ public class MainGUI extends JFrame{
 		b4= new JButton("Create Tree From File");		
 		
 
-=======
 		setFileName("");
 
 		// super(s);
@@ -48,7 +47,6 @@ public class MainGUI extends JFrame{
 		b2 = new JButton("Find");
 		b3 = new JButton("Browse");
 		b4 = new JButton("Create Tree From File");
->>>>>>> branch 'master' of https://github.com/LoganBoras/ENSF_FINAL_PROJECT.git
 
 		setTitle("Main Window");
 		setSize(500, 500);
@@ -74,22 +72,48 @@ public class MainGUI extends JFrame{
 		add("East", new Scrollbar(Scrollbar.VERTICAL));
 
 		setVisible(true);
-<<<<<<< HEAD
 		
 		b1.addActionListener((ActionEvent e) -> {
-			// String key = "";
-			JFrame inputBox = new JFrame("Please enter your search key");
-			inputBox.setSize(300, 50);
-			JTextArea userInput = new JTextArea(300, 300);
-			inputBox.add(userInput);
-			userInput.setVisible(true);
-//			userInput.addActionListener((ActionEvent a) -> {
-//				System.out.println(theTree.find(theTree.root, userInput.getText()));
-//			});
-			inputBox.setVisible(true);
+			JFrame theFrame = new JFrame("Input");
+			JPanel newPanel = new JPanel();
+			
+			GridLayout gl = new GridLayout(5,2); // 4 rows, 2 columns
+			newPanel.setLayout(gl);
+			
+			JButton bOk = new JButton("SUBMIT");
+			
+			
+			JLabel lblID = new JLabel("ID");
+			JTextField txbID = new JTextField();
+			newPanel.add(lblID);
+			newPanel.add(txbID);
+			
+			JLabel lblFaculty = new JLabel("FACULTY");
+			JTextField txbFaculty = new JTextField();
+			newPanel.add(lblFaculty);
+			newPanel.add(txbFaculty);
+			
+			JLabel lblMajor = new JLabel("MAJOR");
+			JTextField txbMajor = new JTextField();
+			newPanel.add(lblMajor);
+			newPanel.add(txbMajor);
+			
+			JLabel lblYear = new JLabel("YEAR");
+			JTextField txbYear = new JTextField();
+			newPanel.add(lblYear);
+			newPanel.add(txbYear);
+			
+			bOk.addActionListener((ActionEvent a) -> {
+				// System.out.println(theTree.find(theTree.root, userInput.getText()));
+				theTree.insert(lblID.getText(), lblFaculty.getText(),lblMajor.getText(),lblYear.getText());
+			});
+			newPanel.add(bOk);
+			
+			theFrame.pack();
+			theFrame.setSize(300,150);
+			theFrame.add(newPanel);
+			theFrame.setVisible(true);
 		});
-=======
-<<<<<<< HEAD
 		
 		/*input = new ObjectInputStream(new FileInputStream("input.txt"));
 		
@@ -103,12 +127,7 @@ public class MainGUI extends JFrame{
             System.out.println("End of file.");
 		}*/
 		
-		b2.addActionListener((ActionEvent e) -> {
-=======
->>>>>>> branch 'master' of https://github.com/LoganBoras/ENSF_FINAL_PROJECT
-
 		b2.addActionListener((ActionEvent e) -> { // Find
->>>>>>> branch 'master' of https://github.com/LoganBoras/ENSF_FINAL_PROJECT.git
 			// String key = "";
 			JFrame inputFrame = new JFrame("Input");
 			JPanel inputPanel = new JPanel();
@@ -133,12 +152,8 @@ public class MainGUI extends JFrame{
 			inputFrame.setVisible(true);
 		});
 
-<<<<<<< HEAD
-		
+
 		b3.addActionListener((ActionEvent e) -> {
-=======
-		b3.addActionListener((ActionEvent e) -> { // Browse
->>>>>>> branch 'master' of https://github.com/LoganBoras/ENSF_FINAL_PROJECT.git
 			StringWriter buffer = new StringWriter();
 			PrintWriter writer = new PrintWriter(buffer);
 			try {
@@ -167,16 +182,14 @@ public class MainGUI extends JFrame{
 			dialog.add(inputPanel);
 			dialog.setSize(400, 200);
 
-			userInput.addActionListener((ActionEvent event) -> {
+			bOk.addActionListener((ActionEvent event) -> {
 				String line = userInput.getText();
 				System.out.println(line);
 				setFileName(line); // error with getText() here
-			});
-
-			bOk.addActionListener((ActionEvent event) -> {
 				createBinaryTree();
 				dialog.dispose();
 			});
+			
 			bCancel.addActionListener((ActionEvent event) -> {
 				dialog.dispose();
 			});
@@ -211,12 +224,9 @@ public class MainGUI extends JFrame{
 	
 	public static void main(String[] args) {
 		MainGUI main= new MainGUI();		
-			
 	}
 
-<<<<<<< HEAD
 
-=======
 	public String getFileName() {
 		return fileName;
 	}
@@ -224,7 +234,6 @@ public class MainGUI extends JFrame{
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
 	}
->>>>>>> branch 'master' of https://github.com/LoganBoras/ENSF_FINAL_PROJECT.git
 
 }
 
