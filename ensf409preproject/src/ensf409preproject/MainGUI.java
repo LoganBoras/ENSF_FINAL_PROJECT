@@ -79,13 +79,21 @@ public class MainGUI extends JFrame {
 			inputFrame.pack();
 			userInput.setVisible(true);
 			userInput.addActionListener((ActionEvent a) -> {
-				// System.out.println(theTree.find(theTree.root, userInput.getText()));
 				Node node = theTree.find(theTree.root, userInput.getText());
+				System.out.println(node);
+				String s = "";
+				JFrame outputFrame = new JFrame("Message");
+				JPanel outputPanel = new JPanel();
 				if (node == null) {
-					// print out to panel can't find student
+					s = "Sorry, could not find target student.";
 				} else {
-					// print out to panel the toString
+					s = node.toString();
 				}
+				JTextArea result = new JTextArea(s);
+				outputPanel.add(result);
+				outputFrame.getContentPane().add(outputPanel);
+				outputFrame.setVisible(true);
+				inputFrame.dispose();
 			});
 			inputFrame.setVisible(true);
 		});
