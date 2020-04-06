@@ -115,7 +115,7 @@ public class MainGUI extends JFrame {
 			dialog.setSize(200, 200);
 
 			userInput.addActionListener((ActionEvent event) -> {
-				fileName = userInput.getText();
+				fileName = userInput.getText(); // error with getText() here
 			});
 
 			bOk.addActionListener((ActionEvent event) -> {
