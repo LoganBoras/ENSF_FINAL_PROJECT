@@ -20,16 +20,15 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+public class MainGUI extends JFrame {
 
-public class MainGUI extends JFrame{
-	
-	private JButton b1,b2,b3,b4;
+	private JButton b1, b2, b3, b4;
 	private BinSearchTree theTree;
 	private BufferedReader scan;
 	private String fileName;
 
-
 	public MainGUI() {
+
 		setFileName("");
 
 		// super(s);
@@ -53,7 +52,7 @@ public class MainGUI extends JFrame{
 		// panel2= (JPanel) getContentPane();
 		JTextArea textArea = new JTextArea(500, 42);
 		JScrollPane scrollPane = new JScrollPane(textArea);
-		//scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		// scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		panel2.add(scrollPane);
 
 		setLayout(new BorderLayout());
@@ -63,7 +62,7 @@ public class MainGUI extends JFrame{
 		add("East", new Scrollbar(Scrollbar.VERTICAL));
 
 		setVisible(true);
-		
+
 		b1.addActionListener((ActionEvent e) -> {
 			// String key = "";
 			JFrame inputBox = new JFrame("Please enter your search key");
@@ -76,19 +75,15 @@ public class MainGUI extends JFrame{
 //			});
 			inputBox.setVisible(true);
 		});
-		
-		/*input = new ObjectInputStream(new FileInputStream("input.txt"));
-		
-		try{
-			while(true) {
-				theTree.insert(input.readLine()); 
-		}
-			
-			
-		}catch(EOFException e) {
-            System.out.println("End of file.");
-		}*/
-		
+
+		/*
+		 * input = new ObjectInputStream(new FileInputStream("input.txt"));
+		 * 
+		 * try{ while(true) { theTree.insert(input.readLine()); }
+		 * 
+		 * 
+		 * }catch(EOFException e) { System.out.println("End of file."); }
+		 */
 
 		b2.addActionListener((ActionEvent e) -> { // Find
 			JFrame inputFrame = new JFrame("Input");
@@ -103,13 +98,21 @@ public class MainGUI extends JFrame{
 			inputFrame.pack();
 			userInput.setVisible(true);
 			userInput.addActionListener((ActionEvent a) -> {
-				// System.out.println(theTree.find(theTree.root, userInput.getText()));
 				Node node = theTree.find(theTree.root, userInput.getText());
+				System.out.println(node);
+				String s = "";
+				JFrame outputFrame = new JFrame("Message");
+				JPanel outputPanel = new JPanel();
 				if (node == null) {
-					// print out to panel can't find student
+					s = "Sorry, could not find target student.";
 				} else {
-					// print out to panel the toString
+					s = node.toString();
 				}
+				JTextArea result = new JTextArea(s);
+				outputPanel.add(result);
+				outputFrame.getContentPane().add(outputPanel);
+				outputFrame.setVisible(true);
+				inputFrame.dispose();
 			});
 			inputFrame.setVisible(true);
 		});
@@ -184,10 +187,9 @@ public class MainGUI extends JFrame{
 		}
 	}
 
-	
 	public static void main(String[] args) {
-		MainGUI main= new MainGUI();		
-			
+		MainGUI main = new MainGUI();
+
 	}
 
 	public String getFileName() {
@@ -199,6 +201,3 @@ public class MainGUI extends JFrame{
 	}
 
 }
-
-
-
