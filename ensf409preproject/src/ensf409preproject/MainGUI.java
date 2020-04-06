@@ -31,7 +31,7 @@ public class MainGUI extends JFrame {
 	private String fileName;
 
 	public MainGUI() {
-		fileName = "";
+		setFileName("");
 
 		// super(s); dont need
 
@@ -100,11 +100,11 @@ public class MainGUI extends JFrame {
 		b4.addActionListener((ActionEvent e) -> {
 			JFrame f = new JFrame("Input");
 			JDialog dialog = new JDialog(f, "Input");
-			JLabel label = new JLabel("Please enter the file name: ");
+			JLabel label = new JLabel("Please enter the file name (and hit enter then ok): ");
 			JButton bOk = new JButton("OK");
 			JButton bCancel = new JButton("Cancel");
 			JPanel inputPanel = new JPanel();
-			JTextField userInput = new JTextField(50);
+			JTextField userInput = new JTextField(20);
 
 			inputPanel.add(label);
 			inputPanel.add(userInput);
@@ -115,11 +115,14 @@ public class MainGUI extends JFrame {
 			dialog.setSize(200, 200);
 
 			userInput.addActionListener((ActionEvent event) -> {
-				fileName = userInput.getText(); // error with getText() here
+				String line = userInput.getText();
+				System.out.println(line);
+				setFileName(line); // error with getText() here
 			});
 
 			bOk.addActionListener((ActionEvent event) -> {
-				createBinaryTree(fileName);
+				createBinaryTree();
+				dialog.dispose();
 			});
 			bCancel.addActionListener((ActionEvent event) -> {
 				dialog.dispose();
@@ -129,10 +132,10 @@ public class MainGUI extends JFrame {
 		});
 	}
 
-	private void createBinaryTree(String fileName) {
+	private void createBinaryTree() {
 		theTree = new BinSearchTree();
 		try {
-			scan = new BufferedReader(new FileReader(fileName));
+			scan = new BufferedReader(new FileReader(getFileName()));
 			String line;
 			String[] words;
 			while (true) {
@@ -154,6 +157,14 @@ public class MainGUI extends JFrame {
 
 	public static void main(String[] args) {
 		MainGUI main = new MainGUI();
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
 	}
 
 }
