@@ -33,13 +33,6 @@ public class MainGUI extends JFrame {
 	public MainGUI() {
 		setFileName("");
 
-		// super(s); dont need
-
-		b1 = new JButton("Insert");
-		b2 = new JButton("Find");
-		b3 = new JButton("Browse");
-		b4 = new JButton("Create Tree From File");
-
 		// super(s);
 
 		b1 = new JButton("Insert");
@@ -72,20 +65,32 @@ public class MainGUI extends JFrame {
 
 		setVisible(true);
 
-		b2.addActionListener((ActionEvent e) -> {
+		b2.addActionListener((ActionEvent e) -> { // Find
 			// String key = "";
-			JFrame inputBox = new JFrame("Please enter your search key");
-			inputBox.setSize(300, 50);
-			JTextField userInput = new JTextField(50);
-			inputBox.add(userInput);
+			JFrame inputFrame = new JFrame("Input");
+			JPanel inputPanel = new JPanel();
+			JLabel label = new JLabel("Please enter the student's ID: ");
+			JTextField userInput = new JTextField(20);
+
+			inputPanel.add(label);
+			inputPanel.add(userInput);
+			inputFrame.add(inputPanel);
+
+			inputFrame.pack();
 			userInput.setVisible(true);
 			userInput.addActionListener((ActionEvent a) -> {
-				System.out.println(theTree.find(theTree.root, userInput.getText()));
+				// System.out.println(theTree.find(theTree.root, userInput.getText()));
+				Node node = theTree.find(theTree.root, userInput.getText());
+				if (node == null) {
+					// print out to panel can't find student
+				} else {
+					// print out to panel the toString
+				}
 			});
-			inputBox.setVisible(true);
+			inputFrame.setVisible(true);
 		});
 
-		b3.addActionListener((ActionEvent e) -> {
+		b3.addActionListener((ActionEvent e) -> { // Browse
 			StringWriter buffer = new StringWriter();
 			PrintWriter writer = new PrintWriter(buffer);
 			try {
@@ -97,14 +102,14 @@ public class MainGUI extends JFrame {
 			textArea.setText(contents);
 		});
 
-		b4.addActionListener((ActionEvent e) -> {
+		b4.addActionListener((ActionEvent e) -> { // Create tree from file
 			JFrame f = new JFrame("Input");
 			JDialog dialog = new JDialog(f, "Input");
 			JLabel label = new JLabel("Please enter the file name (and hit enter then ok): ");
 			JButton bOk = new JButton("OK");
 			JButton bCancel = new JButton("Cancel");
 			JPanel inputPanel = new JPanel();
-			JTextField userInput = new JTextField(20);
+			JTextField userInput = new JTextField(35);
 
 			inputPanel.add(label);
 			inputPanel.add(userInput);
@@ -112,7 +117,7 @@ public class MainGUI extends JFrame {
 			inputPanel.add(bCancel);
 			inputPanel.add(bOk);
 			dialog.add(inputPanel);
-			dialog.setSize(200, 200);
+			dialog.setSize(400, 200);
 
 			userInput.addActionListener((ActionEvent event) -> {
 				String line = userInput.getText();
