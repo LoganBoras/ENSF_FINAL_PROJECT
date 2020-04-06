@@ -28,8 +28,10 @@ public class MainGUI extends JFrame {
 	private BinSearchTree theTree;
 	private PrintWriter pr;
 	private BufferedReader scan;
+	private String fileName;
 
 	public MainGUI() {
+		fileName = "";
 
 		// super(s); dont need
 
@@ -96,7 +98,6 @@ public class MainGUI extends JFrame {
 		});
 
 		b4.addActionListener((ActionEvent e) -> {
-			String fileName = "";
 			JFrame f = new JFrame("Input");
 			JDialog dialog = new JDialog(f, "Input");
 			JLabel label = new JLabel("Please enter the file name: ");
@@ -114,8 +115,9 @@ public class MainGUI extends JFrame {
 			dialog.setSize(200, 200);
 
 			userInput.addActionListener((ActionEvent event) -> {
-
+				fileName = userInput.getText();
 			});
+
 			bOk.addActionListener((ActionEvent event) -> {
 				createBinaryTree(fileName);
 			});
