@@ -2,7 +2,6 @@ package ensf409preproject;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
-import java.awt.Scrollbar;
 import java.awt.event.ActionEvent;
 import java.io.BufferedReader;
 import java.io.EOFException;
@@ -21,23 +20,18 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+public class MainGUI extends JFrame {
 
-public class MainGUI extends JFrame{
-	
-	private JButton b1,b2,b3,b4;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JButton b1, b2, b3, b4;
 	private BinSearchTree theTree;
 	private BufferedReader scan;
 	private String fileName;
 
-
 	public MainGUI() {
-		//super(s); dont need
-		
-		b1= new JButton("Insert");
-		b2= new JButton("Find");
-		b3= new JButton("Browse");
-		b4= new JButton("Create Tree From File");		
-		
 
 		setFileName("");
 
@@ -60,19 +54,21 @@ public class MainGUI extends JFrame{
 
 		JPanel panel2 = new JPanel();
 		// panel2= (JPanel) getContentPane();
-		JTextArea textArea = new JTextArea(500, 42);
+		JTextArea textArea = new JTextArea(25, 42);
 		JScrollPane scrollPane = new JScrollPane(textArea);
-		//scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		panel2.add(scrollPane);
+		
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		setLayout(new BorderLayout());
 		add("North", new JLabel("An Application to Maintain Student Records"));
 		add("South", getContentPane().add(panel1));
 		add("Center", getContentPane().add(panel2));
-		add("East", new Scrollbar(Scrollbar.VERTICAL));
+		//add("East", new Scrollbar(Scrollbar.VERTICAL));
 
 		setVisible(true);
-		
+
 		b1.addActionListener((ActionEvent e) -> {
 			JFrame theFrame = new JFrame("Input");
 			JPanel newPanel = new JPanel();
@@ -105,7 +101,8 @@ public class MainGUI extends JFrame{
 			
 			bOk.addActionListener((ActionEvent a) -> {
 				// System.out.println(theTree.find(theTree.root, userInput.getText()));
-				theTree.insert(lblID.getText(), lblFaculty.getText(),lblMajor.getText(),lblYear.getText());
+				theTree.insert(txbID.getText(), txbFaculty.getText(),txbMajor.getText(),txbYear.getText());
+				theFrame.dispose();
 			});
 			newPanel.add(bOk);
 			
@@ -114,19 +111,7 @@ public class MainGUI extends JFrame{
 			theFrame.add(newPanel);
 			theFrame.setVisible(true);
 		});
-		
-		/*input = new ObjectInputStream(new FileInputStream("input.txt"));
-		
-		try{
-			while(true) {
-				theTree.insert(input.readLine()); 
-		}
-			
-			
-		}catch(EOFException e) {
-            System.out.println("End of file.");
-		}*/
-		
+
 		b2.addActionListener((ActionEvent e) -> { // Find
 			// String key = "";
 			JFrame inputFrame = new JFrame("Input");
@@ -141,14 +126,24 @@ public class MainGUI extends JFrame{
 			inputFrame.pack();
 			userInput.setVisible(true);
 			userInput.addActionListener((ActionEvent a) -> {
-				// System.out.println(theTree.find(theTree.root, userInput.getText()));
 				Node node = theTree.find(theTree.root, userInput.getText());
+				System.out.println(node);
+				String s = "";
+				JFrame outputFrame = new JFrame("Message");
+				JPanel outputPanel = new JPanel();
 				if (node == null) {
-					// print out to panel can't find student
+					s = "Sorry, could not find target student.";
 				} else {
-					// print out to panel the toString
+					s = node.toString();
 				}
+				JTextArea result = new JTextArea(s);
+				outputPanel.add(result);
+				outputFrame.getContentPane().add(outputPanel);
+				outputFrame.setSize(300, 75);
+				outputFrame.setVisible(true);
+				inputFrame.dispose();
 			});
+			
 			inputFrame.setVisible(true);
 		});
 
@@ -221,9 +216,8 @@ public class MainGUI extends JFrame{
 		}
 	}
 
-	
 	public static void main(String[] args) {
-		MainGUI main= new MainGUI();		
+		new MainGUI();		
 	}
 
 
@@ -236,6 +230,3 @@ public class MainGUI extends JFrame{
 	}
 
 }
-
-
-
