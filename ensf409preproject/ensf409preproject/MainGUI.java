@@ -20,22 +20,49 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+/**
+ * 
+ * @author Adityasinh Raj 30063082, Vanessa Chen 30065653, Logan Boras 30071661
+ * @since April 6, 2020
+ * @version 1
+ * 
+ * The purpose of this class is to create and display the user interface for the application.
+ * 
+ */
 public class MainGUI extends JFrame {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * Buttons for various options in the GUI
+	 */
 	private JButton b1, b2, b3, b4;
+	
+	/**
+	 * Binary search tree for student records
+	 */
 	private BinSearchTree theTree;
+	
+	/**
+	 * Scanner to take user input
+	 */
 	private BufferedReader scan;
+	
+	/**
+	 * Name of the input file
+	 */
 	private String fileName;
-
+	
+	/**
+	 * Default constructor for the MainGUI class.
+	 */
 	public MainGUI() {
 
 		setFileName("");
 
-		// super(s);
 
 		b1 = new JButton("Insert");
 		b2 = new JButton("Find");
@@ -46,14 +73,12 @@ public class MainGUI extends JFrame {
 		setSize(500, 500);
 
 		JPanel panel1 = new JPanel();
-		// panel1=(JPanel) getContentPane();
 		panel1.add(b1);
 		panel1.add(b2);
 		panel1.add(b3);
 		panel1.add(b4);
 
 		JPanel panel2 = new JPanel();
-		// panel2= (JPanel) getContentPane();
 		JTextArea textArea = new JTextArea(25, 42);
 		JScrollPane scrollPane = new JScrollPane(textArea);
 		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
@@ -65,15 +90,15 @@ public class MainGUI extends JFrame {
 		add("North", new JLabel("An Application to Maintain Student Records"));
 		add("South", getContentPane().add(panel1));
 		add("Center", getContentPane().add(panel2));
-		//add("East", new Scrollbar(Scrollbar.VERTICAL));
 
 		setVisible(true);
-
+		
+		// Button to insert new data in the binary search tree
 		b1.addActionListener((ActionEvent e) -> {
 			JFrame theFrame = new JFrame("Input");
 			JPanel newPanel = new JPanel();
 			
-			GridLayout gl = new GridLayout(5,2); // 4 rows, 2 columns
+			GridLayout gl = new GridLayout(5,2); // 5 rows, 2 columns
 			newPanel.setLayout(gl);
 			
 			JButton bOk = new JButton("SUBMIT");
@@ -99,8 +124,8 @@ public class MainGUI extends JFrame {
 			newPanel.add(lblYear);
 			newPanel.add(txbYear);
 			
+			//On press, insert the data given by the user
 			bOk.addActionListener((ActionEvent a) -> {
-				// System.out.println(theTree.find(theTree.root, userInput.getText()));
 				theTree.insert(txbID.getText(), txbFaculty.getText(),txbMajor.getText(),txbYear.getText());
 				theFrame.dispose();
 			});
@@ -111,9 +136,9 @@ public class MainGUI extends JFrame {
 			theFrame.add(newPanel);
 			theFrame.setVisible(true);
 		});
-
+		
+		// Button that finds a record given the ID.
 		b2.addActionListener((ActionEvent e) -> { // Find
-			// String key = "";
 			JFrame inputFrame = new JFrame("Input");
 			JPanel inputPanel = new JPanel();
 			JLabel label = new JLabel("Please enter the student's ID: ");
@@ -125,6 +150,8 @@ public class MainGUI extends JFrame {
 
 			inputFrame.pack();
 			userInput.setVisible(true);
+			
+			//On press, find and display the record with the given ID.
 			userInput.addActionListener((ActionEvent a) -> {
 				Node node = theTree.find(theTree.root, userInput.getText());
 				System.out.println(node);
@@ -147,7 +174,7 @@ public class MainGUI extends JFrame {
 			inputFrame.setVisible(true);
 		});
 
-
+		//Button that displays the contents of the binary search tree
 		b3.addActionListener((ActionEvent e) -> {
 			StringWriter buffer = new StringWriter();
 			PrintWriter writer = new PrintWriter(buffer);
@@ -159,15 +186,16 @@ public class MainGUI extends JFrame {
 			String contents = buffer.toString();
 			textArea.setText(contents);
 		});
-
-		b4.addActionListener((ActionEvent e) -> { // Create tree from file
+		
+		//Button that creates a binary search tree from a file
+		b4.addActionListener((ActionEvent e) -> { 
 			JFrame f = new JFrame("Input");
 			JDialog dialog = new JDialog(f, "Input");
-			JLabel label = new JLabel("Please enter the file name (and hit enter then ok): ");
+			JLabel label = new JLabel("Please enter the file name then hit ok: ");
 			JButton bOk = new JButton("OK");
 			JButton bCancel = new JButton("Cancel");
 			JPanel inputPanel = new JPanel();
-			JTextField userInput = new JTextField(35);
+			JTextField userInput = new JTextField(30);
 
 			inputPanel.add(label);
 			inputPanel.add(userInput);
@@ -176,7 +204,8 @@ public class MainGUI extends JFrame {
 			inputPanel.add(bOk);
 			dialog.add(inputPanel);
 			dialog.setSize(400, 200);
-
+			
+			//On press, creates the binary tree with the given file name.
 			bOk.addActionListener((ActionEvent event) -> {
 				String line = userInput.getText();
 				System.out.println(line);
@@ -192,7 +221,9 @@ public class MainGUI extends JFrame {
 			dialog.setVisible(true);
 		});
 	}
-
+	/**
+	 * Creates a binary search tree from an input file.
+	 */
 	private void createBinaryTree() {
 		theTree = new BinSearchTree();
 		try {
@@ -216,17 +247,24 @@ public class MainGUI extends JFrame {
 		}
 	}
 
-	public static void main(String[] args) {
-		new MainGUI();		
-	}
-
-
+	/**
+	 * 
+	 * @return name of input file.
+	 */
 	public String getFileName() {
 		return fileName;
 	}
 
+	/**
+	 * Sets the name of the input file.
+	 */
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
 	}
+	
+	public static void main(String[] args) {
+		new MainGUI();		
+	}
+
 
 }
