@@ -8,7 +8,6 @@ import java.io.EOFException;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
@@ -21,16 +20,26 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public class MainGUI extends JFrame {
 
-	private JButton b1, b2, b3, b4;
-	private ObjectInputStream input;
+public class MainGUI extends JFrame{
+	
+	private JButton b1,b2,b3,b4;
 	private BinSearchTree theTree;
-	private PrintWriter pr;
 	private BufferedReader scan;
 	private String fileName;
 
+
 	public MainGUI() {
+<<<<<<< HEAD
+		//super(s); dont need
+		
+		b1= new JButton("Insert");
+		b2= new JButton("Find");
+		b3= new JButton("Browse");
+		b4= new JButton("Create Tree From File");		
+		
+
+=======
 		setFileName("");
 
 		// super(s);
@@ -39,6 +48,7 @@ public class MainGUI extends JFrame {
 		b2 = new JButton("Find");
 		b3 = new JButton("Browse");
 		b4 = new JButton("Create Tree From File");
+>>>>>>> branch 'master' of https://github.com/LoganBoras/ENSF_FINAL_PROJECT.git
 
 		setTitle("Main Window");
 		setSize(500, 500);
@@ -64,6 +74,7 @@ public class MainGUI extends JFrame {
 		add("East", new Scrollbar(Scrollbar.VERTICAL));
 
 		setVisible(true);
+<<<<<<< HEAD
 		
 		b1.addActionListener((ActionEvent e) -> {
 			// String key = "";
@@ -77,8 +88,27 @@ public class MainGUI extends JFrame {
 //			});
 			inputBox.setVisible(true);
 		});
+=======
+<<<<<<< HEAD
+		
+		/*input = new ObjectInputStream(new FileInputStream("input.txt"));
+		
+		try{
+			while(true) {
+				theTree.insert(input.readLine()); 
+		}
+			
+			
+		}catch(EOFException e) {
+            System.out.println("End of file.");
+		}*/
+		
+		b2.addActionListener((ActionEvent e) -> {
+=======
+>>>>>>> branch 'master' of https://github.com/LoganBoras/ENSF_FINAL_PROJECT
 
 		b2.addActionListener((ActionEvent e) -> { // Find
+>>>>>>> branch 'master' of https://github.com/LoganBoras/ENSF_FINAL_PROJECT.git
 			// String key = "";
 			JFrame inputFrame = new JFrame("Input");
 			JPanel inputPanel = new JPanel();
@@ -103,7 +133,12 @@ public class MainGUI extends JFrame {
 			inputFrame.setVisible(true);
 		});
 
+<<<<<<< HEAD
+		
+		b3.addActionListener((ActionEvent e) -> {
+=======
 		b3.addActionListener((ActionEvent e) -> { // Browse
+>>>>>>> branch 'master' of https://github.com/LoganBoras/ENSF_FINAL_PROJECT.git
 			StringWriter buffer = new StringWriter();
 			PrintWriter writer = new PrintWriter(buffer);
 			try {
@@ -173,10 +208,15 @@ public class MainGUI extends JFrame {
 		}
 	}
 
+	
 	public static void main(String[] args) {
-		MainGUI main = new MainGUI();
+		MainGUI main= new MainGUI();		
+			
 	}
 
+<<<<<<< HEAD
+
+=======
 	public String getFileName() {
 		return fileName;
 	}
@@ -184,5 +224,9 @@ public class MainGUI extends JFrame {
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
 	}
+>>>>>>> branch 'master' of https://github.com/LoganBoras/ENSF_FINAL_PROJECT.git
 
 }
+
+
+
