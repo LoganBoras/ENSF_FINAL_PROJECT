@@ -61,7 +61,7 @@ public class MainGUI extends JFrame {
 		// panel2= (JPanel) getContentPane();
 		JTextArea textArea = new JTextArea(500, 42);
 		JScrollPane scrollPane = new JScrollPane(textArea);
-		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		//scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		panel2.add(scrollPane);
 
 		setLayout(new BorderLayout());
@@ -71,6 +71,19 @@ public class MainGUI extends JFrame {
 		add("East", new Scrollbar(Scrollbar.VERTICAL));
 
 		setVisible(true);
+		
+		b1.addActionListener((ActionEvent e) -> {
+			// String key = "";
+			JFrame inputBox = new JFrame("Please enter your search key");
+			inputBox.setSize(300, 50);
+			JTextArea userInput = new JTextArea(300, 300);
+			inputBox.add(userInput);
+			userInput.setVisible(true);
+//			userInput.addActionListener((ActionEvent a) -> {
+//				System.out.println(theTree.find(theTree.root, userInput.getText()));
+//			});
+			inputBox.setVisible(true);
+		});
 
 		b2.addActionListener((ActionEvent e) -> {
 			// String key = "";
